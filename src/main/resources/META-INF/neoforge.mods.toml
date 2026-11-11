@@ -1,0 +1,43 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "Apache-2.0"
+
+[[mods]]
+modId = "tisam"
+version = "1.0.0"
+displayName = "There Is Still A Mod"
+displayURL = "https://modrinth.com/mod/tisam"
+#logoFile="examplemod.png"
+authors = "filowxy"
+description = "TISAM — a compliance-friendly optional mod recommender for modpack authors. Never bundles any third-party mod files; all downloads are user-initiated through official channels."
+
+[[mixins]]
+config="tisam.mixins.json"
+
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
+[[dependencies.tisam]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.233,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.tisam]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"
+
+# TISAM builds directly against com.hellow.* (HellowModal, Elements, State, ...)
+# and does not bundle it via jarJar — without this declaration a player who
+# installs TISAM alone would crash with NoClassDefFoundError instead of getting
+# a clear missing-dependency message.
+[[dependencies.tisam]]
+modId = "hellow"
+type = "required"
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "CLIENT"
